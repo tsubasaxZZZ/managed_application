@@ -1,0 +1,36 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageAccountName": {
+            "type": "String"
+        },
+        "applianceDefinitionId": {
+            "type": "String"
+        },
+        "managedByResourceGroup": {
+            "type": "String"
+        },
+        "applianceName": {
+            "type": "String"
+        },
+    },
+    "variables": {            
+    },
+    "resources": [{
+        "type": "Microsoft.Solutions/appliances",
+        "name": "[parameters('applianceName')]",
+        "apiVersion": "2016-09-01-preview",
+        "location": "[resourceGroup().location]",
+        "kind": "ServiceCatalog",
+        "properties": {
+            "ManagedResourceGroupId": "[parameters('managedByResourceGroup')]",
+            "applianceDefinitionId": "[parameters('applianceDefinitionId')]",
+            "Parameters": {
+                "storageAccountName": {
+                    "value": "[parameters('storageAccountName')]"
+                }             
+            }
+        }
+    }]
+}
