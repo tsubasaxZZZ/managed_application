@@ -9,11 +9,12 @@
             "type": "String"
         },
         "managedByResourceGroup": {
-            "type": "String"
+            "type": "String",
+            "defaultValue": "[concat(resourceGroup().id,uniquestring(resourceGroup().id))]"
         },
         "applianceName": {
             "type": "String"
-        },
+        }
     },
     "variables": {            
     },

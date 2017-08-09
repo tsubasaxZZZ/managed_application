@@ -1,0 +1,39 @@
+{
+   "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json",
+   "handler": "Microsoft.Compute.MultiVm",
+   "version": "0.1.2-preview",
+   "parameters": {
+      "basics": [
+      {
+        "name": "applianceDefinitionId",
+        "type": "Microsoft.Common.TextBox",
+        "defaultValue": "",
+        "label": "アプリケーション定義ID",
+        "toolTip": "アプリケーション定義IDを入力してください。例)/subscriptions/33325c7f-089d-493b-9ad9-1400a8da5394/resourceGroups/ManageAppGroup/providers/Microsoft.Solutions/applianceDefinitions/StorageAccountDeployforWebCast",
+        "constraints": {"required": true }
+      },
+      {
+        "name": "applianceName",
+        "type": "Microsoft.Common.TextBox",
+        "defaultValue": "",
+        "label": "アプリケーション名",
+        "toolTip": "アプリケーション名を入力してください。",
+        "constraints": {"required": true }
+      },
+      {
+        "name": "storageAccountName",
+        "type": "Microsoft.Common.TextBox",
+        "defaultValue": "",
+        "label": "ストレージ アカウント名",
+        "toolTip": "ストレージ アカウント名を入力してください。これは、全世界でユニークである必要があります。例)mystorage",
+        "constraints": {"required": true }
+      }
+    ],
+      "steps": [ ],
+      "outputs": { 
+          "storageAccountName": "[basics('storageAccountName')]",
+          "applianceDefinitionId": "[basics('applianceDefinitionId')]",
+          "applianceName": "[basics('applianceName')]"
+     }
+   }
+}
